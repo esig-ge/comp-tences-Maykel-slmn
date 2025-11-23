@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <h2>Supprimer l'article</h2>
+
+  <p>Es-tu sûr(e) de vouloir supprimer : <strong>{{ post.title }}</strong> ?</p>
+
+  <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+      <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary">
+          Annuler
+      </a>
+  </form>
+{% endblock %}
