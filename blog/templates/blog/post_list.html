@@ -8,7 +8,7 @@
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
-{% empty %}
+    {% empty %}
     <div class="alert alert-warning" role="alert">
         <p>L'article que vous recherchez n'a pas été trouvé.</p>
         <a href="{% url 'post_list' %}">Retourner à la liste complète</a>
