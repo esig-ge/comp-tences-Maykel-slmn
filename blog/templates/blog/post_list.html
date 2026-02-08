@@ -1,16 +1,17 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     {% for post in posts %}
-        <article class="post">
-            <time class="date">
-                {{ post.published_date }}
-            </time>
-            <h2>
-                <a href="{% url 'post_detail' pk=post.pk %}">
-                    {{ post.title }}
-                </a>
-            </h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </article>
-    {% endfor %}
+    <div class="post">
+        <div class="date">
+            {{ post.published_date }}
+        </div>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% empty %}
+    <div class="alert alert-warning" role="alert">
+        <p>L'article que vous recherchez n'a pas été trouvé.</p>
+        <a href="{% url 'post_list' %}">Retourner à la liste complète</a>
+    </div>
+{% endfor %}
 {% endblock %}
